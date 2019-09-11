@@ -40,7 +40,7 @@ app.get("/turn_left", (req, res) => {
     res.send("turn right");
 });
 app.get("/TV", (req, res) => {
-    res.sendFile(__dirname+"/TV"+"index.html");
+    res.sendFile(__dirname+"/TV/"+"index.html");
 });
 app.listen(3000, () => {
     console.log("Server listening on port 3000");
