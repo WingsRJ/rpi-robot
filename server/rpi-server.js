@@ -6,11 +6,15 @@ app.get("/reset", (req, res) => {
     var player = omx("../data/reset.mp4");
     res.send("turn right");
     setTimeout(() => {
-        player.newSource("../data/wake_up.mp4"); 
+        player.pause();("../data/wake_up.mp4"); 
     }, 3000); 
 });
 app.get("/wake_up", (req, res) => {
+    var player = omx("../data/wake_up.mp4");
     res.send("turn right");
+    setTimeout(() => {
+        player.pause(); 
+    }, 3000); 
 });
 app.get("/sleep", (req, res) => {
     res.send("turn right");
