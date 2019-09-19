@@ -5,9 +5,9 @@ const app = express();
 app.get("/reset", (req, res) => {
     var player = omx("../data/reset.mp4");
     res.send("turn right");
-    player.on("close", () => {
-        player.newSource("../data/wake_up.mp4");
-    }) 
+    setTimeout(() => {
+        player.newSource("../data/wake_up.mp4"); 
+    }, 3000); 
 });
 app.get("/wake_up", (req, res) => {
     res.send("turn right");
