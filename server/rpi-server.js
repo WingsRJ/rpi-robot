@@ -1,51 +1,123 @@
 const express = require("express");
-const omx = require("node-omxplayer");
-
 const app = express();
-app.get("/reset", (req, res) => {
-    var player = omx("../data/reset.mp4");
-    res.send("turn right");
-    setTimeout(() => {
-        player.pause();("../data/wake_up.mp4"); 
-    }, 3000); 
-});
-app.get("/wake_up", (req, res) => {
-    var player = omx("../data/wake_up.mp4");
-    res.send("turn right");
-    setTimeout(() => {
-        player.pause(); 
-    }, 3000); 
-});
-app.get("/sleep", (req, res) => {
-    res.send("turn right");
-});
-app.get("/talk", (req, res) => {
-    res.send("turn right");
-});
-app.get("/wait", (req, res) => {
-    res.send("turn right");
-});
-app.get("/move_out", (req, res) => {
-    res.send("turn right");
-});
-app.get("/move_in", (req, res) => {
-    res.send("turn right");
-});
-app.get("/superpower", (req, res) => {
-    res.send("turn right");
-});
-app.get("/communicate", (req, res) => {
-    res.send("turn right");
-});
-app.get("/turn_right", (req, res) => {
-    res.send("turn right");
-});
-app.get("/turn_left", (req, res) => {
-    res.send("turn right");
-});
-app.get("/TV", (req, res) => {
-    res.sendFile(__dirname+"/TV/"+"index.html");
-});
-app.listen(3000, () => {
-    console.log("Server listening on port 3000");
-});
+const omx = require("node-omxplayer");
+const TV_position = 60;
+const User_position = -60;
+var Robot_position = 0;
+
+var socket = require("socket.io");
+var server = app.listen(3000);
+var io = socket(server);
+
+console.log("Server listening on port 3000");
+
+app.use(express.static("Control_Center"));
+app.use(express.static("TV"));
+
+io.sockets.on("connection", newConnection);
+
+function newConnection(socket) {
+    console.log("new connection: " + socket.id);
+    socket.on("RO_action", RO_action);
+    socket.on("TV_action", TV_action);
+
+    function TV_action(actionName) {
+        socket.broadcast.emit("TV_action", actionName);
+        console.log("TV_action: " + actionName);
+    }
+}
+
+function RO_action(actionName) {
+    if (actionName == "RO_wake_up") {
+        console.log("Wake up");
+        var player = omx("../data/RO_wake_up.mp4", loop);
+        setTimeout(player.pause(), 2000);
+        //servo
+    } else if (actionName == "RO_here") {
+        console.log("here");
+        var player = omx("../data/RO_here.mp4", loop);
+        setTimeout(player.pause(), 1000);
+    } else if (actionName == "RO_turn_to_User") {
+        console.log("turn to User");
+        if (User_position < Robot_position) {
+            var player = omx("../data/RO_turn_left.mp4", loop);
+        }else if(User_position > Robot_position) {
+            var player = omx("../data/RO_turn_right.mp4", loop);
+        }
+        setTimeout(player.pause(), 1000);
+        //servo
+    } else if (actionName == "RO_turn_to_TV") {
+        console.log("turn  to TV");
+        if (TV_position < Robot_position) {
+            var player = omx("../data/RO_turn_left.mp4", loop);
+        }else if(TV_position > Robot_position) {
+            var player = omx("../data/RO_turn_right.mp4", loop);
+        }
+        setTimeout(player.pause(), 1000);
+        //servo
+    } else if (actionName == "RO_wait") {
+        console.log("wait");
+        var player = omx("../data/RO_wait.mp4", loop);
+    } else if (actionName == "RO_OK") {
+        console.log("OK");
+        var player = omx("../data/RO_OK.mp4", loop);
+        setTimeout(player.pause(), 1000);
+    } else if (actionName == "RO_sleep") {
+        console.log("sleep");
+        var player = omx("../data/RO_sleep.mp4", loop);
+        setTimeout(player.pause(), 2000);
+        //servo
+    } else if (actionName == "RO_move_out") {
+        console.log("move out");
+        var player = omx("../data/RO_move_out.mp4", loop);
+        setTimeout(() => {
+            //servo
+            var player = omx("../data/RO_sleep.mp4", loop);
+            setTimeout(player.pause(), 2000);
+        }, 3000);
+    } else if (actionName == "RO_move_in") {
+        console.log("move in");
+        var player = omx("../data/RO_wake_up.mp4", loop);
+        //servo
+        setTimeout(() => {
+            var player = omx("../data/RO_move_in.mp4", loop);
+            setTimeout(player.pause(), 3000);
+        }, 2000);
+    } else if (actionName == "RO_play(RE)") {
+        console.log("play(RE)")
+        var player = omx("../data/RO_play(RE).mp4", loop);
+        setTimeout(player.pause(), 3000);
+    } else if (actionName == "RO_superpower") {
+        console.log("superpower")
+        var player = omx("../data/RO_superpower.mp4", loop);
+        setTimeout(player.pause(), 3000);
+    } else if (actionName == "RO_play(CT)") {
+        console.log("play(CT)")
+        var player = omx("../data/RO_play(CT).mp4", loop);
+        setTimeout(player.pause(), 3000);
+    } else if (actionName == "RO_communicate") {
+        console.log("communicate")
+        var player = omx("../data/RO_communicate.mp4", loop);
+        setTimeout(player.pause(), 3000);
+    } else if (actionName == "RO_play(R)") {
+        console.log("play(R)")
+        var player = omx("../data/RO_play(R).mp4", loop);
+        setTimeout(player.pause(), 3000);
+    } else if (actionName == "RO_play(CVST)") {
+        console.log("play(CVST)")
+        var player = omx("../data/RO_play(CVST).mp4", loop);
+        setTimeout(player.pause(), 3000);
+    } else if (actionName == "RO_reset") {
+        console.log("reset")
+        //servo
+        var player = omx("../data/RO_sleep.mp4", loop);
+        setTimeout(() => {
+            player.quit();
+            //servo
+            var player = omx("../data/black.mp4", loop);
+            player.pause();
+        }, 3000);
+    } else {
+        console.log("Error !");
+    }
+}
