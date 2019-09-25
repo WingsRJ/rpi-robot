@@ -36,15 +36,15 @@ function RO_action(actionName) {
     if (actionName == "RO_wake_up") {
         console.log("Wake up");
         var player = omx("../data/RO_wake_up.mp4", 'local', true);
-        setTimeout(() => {
-            player.pause()
-        }, 2000);
+        // setTimeout(() => {
+        //     player.pause();
+        // }, 2000);
         //servo
     } else if (actionName == "RO_here") {
         console.log("here");
         var player = omx("../data/RO_here.mp4", 'local', true);
         setTimeout(() => {
-            player.pause()
+            player.pause();
         }, 1000);
     } else if (actionName == "RO_turn_to_User") {
         console.log("turn to User");
@@ -54,7 +54,7 @@ function RO_action(actionName) {
             var player = omx("../data/RO_turn_right.mp4", 'local', true);
         }
         setTimeout(() => {
-            player.pause()
+            player.pause();
         }, 1000);
         //servo
     } else if (actionName == "RO_turn_to_TV") {
@@ -65,7 +65,7 @@ function RO_action(actionName) {
             var player = omx("../data/RO_turn_right.mp4", 'local', true);
         }
         setTimeout(() => {
-            player.pause()
+            player.pause();
         }, 1000);
         //servo
     } else if (actionName == "RO_wait") {
@@ -75,13 +75,13 @@ function RO_action(actionName) {
         console.log("OK");
         var player = omx("../data/RO_OK.mp4", 'local', true);
         setTimeout(() => {
-            player.pause()
+            player.pause();
         }, 1000);
     } else if (actionName == "RO_sleep") {
         console.log("sleep");
         var player = omx("../data/RO_sleep.mp4", 'local', true);
         setTimeout(() => {
-            player.pause()
+            player.pause();
         }, 2000);
         //servo
     } else if (actionName == "RO_move_out") {
@@ -91,7 +91,7 @@ function RO_action(actionName) {
             //servo
             var player = omx("../data/RO_sleep.mp4", 'local', true);
             setTimeout(() => {
-                player.pause()
+                player.pause();
             }, 2000);
         }, 3000);
     } else if (actionName == "RO_move_in") {
@@ -101,44 +101,44 @@ function RO_action(actionName) {
         setTimeout(() => {
             var player = omx("../data/RO_move_in.mp4", 'local', true);
             setTimeout(() => {
-                player.pause()
+                player.pause();
             }, 3000);
         }, 2000);
     } else if (actionName == "RO_play(RE)") {
         console.log("play(RE)")
         var player = omx("../data/RO_play(RE).mp4", 'local', true);
         setTimeout(() => {
-            player.pause()
+            player.pause();
         }, 3000);
     } else if (actionName == "RO_superpower") {
         console.log("superpower")
         var player = omx("../data/RO_superpower.mp4", 'local', true);
         setTimeout(() => {
-            player.pause()
+            player.pause();
         }, 3000);
     } else if (actionName == "RO_play(CT)") {
         console.log("play(CT)")
         var player = omx("../data/RO_play(CT).mp4", 'local', true);
         setTimeout(() => {
-            player.pause()
+            player.pause();
         }, 3000);
     } else if (actionName == "RO_communicate") {
         console.log("communicate")
         var player = omx("../data/RO_communicate.mp4", 'local', true);
         setTimeout(() => {
-            player.pause()
+            player.pause();
         }, 3000);
     } else if (actionName == "RO_play(R)") {
         console.log("play(R)")
         var player = omx("../data/RO_play(R).mp4", 'local', true);
         setTimeout(() => {
-            player.pause()
+            player.pause();
         }, 3000);
     } else if (actionName == "RO_play(CVST)") {
         console.log("play(CVST)")
         var player = omx("../data/RO_play(CVST).mp4", 'local', true);
         setTimeout(() => {
-            player.pause()
+            player.pause();
         }, 3000);
     } else if (actionName == "RO_reset") {
         console.log("reset")
@@ -149,7 +149,7 @@ function RO_action(actionName) {
             //servo
             var player = omx("../data/black.mp4", 'local', true);
             () => {
-                player.pause()
+                player.pause();
             };
         }, 3000);
     } else {
