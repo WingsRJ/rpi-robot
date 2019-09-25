@@ -67,7 +67,7 @@ function preload() {
 function setup() {
     cvs = createCanvas(480, 270);
     time = 0;
-    socket = io.connect("http://192.168.2.7:3000");
+    socket = io.connect("http://192.168.43.217:3000");
     background(0);
     noStroke();
     fill(255);

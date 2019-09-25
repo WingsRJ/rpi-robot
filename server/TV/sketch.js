@@ -16,7 +16,7 @@ function setup() {
     textAlign(CENTER, CENTER);
     textSize(100);
     fill(255);
-    socket = io.connect("http://192.168.2.7:3000");
+    socket = io.connect("http://192.168.43.217:3000");
     socket.on("TV_action_name", action);
 }
 
