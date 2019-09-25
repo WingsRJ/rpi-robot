@@ -11,8 +11,8 @@ var io = socket(server);
 
 console.log("Server listening on port 3000");
 
-app.use(express.static("Control_Center"));
-app.use(express.static("TV"));
+app.use(express.static("../Control_Center"));
+app.use(express.static("../TV"));
 
 io.sockets.on("connection", newConnection);
 
