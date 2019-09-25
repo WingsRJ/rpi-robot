@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+const path = require("path");
 const omx = require("node-omxplayer");
 const TV_position = 60;
 const User_position = -60;
@@ -11,8 +12,8 @@ var io = socket(server);
 
 console.log("Server listening on port 3000");
 
-app.use("/Control_Center",express.static("Control_Center"));
-app.use("/TV",express.static("TV"));
+app.use("/Control_Center", express.static(path.join(__dirname, "Control_Center")));
+app.use("/TV", express.static(path.join(__dirname, "TV")));
 
 io.sockets.on("connection", newConnection);
 
@@ -41,7 +42,7 @@ function RO_action(actionName) {
         console.log("turn to User");
         if (User_position < Robot_position) {
             var player = omx("../data/RO_turn_left.mp4", loop);
-        }else if(User_position > Robot_position) {
+        } else if (User_position > Robot_position) {
             var player = omx("../data/RO_turn_right.mp4", loop);
         }
         setTimeout(player.pause(), 1000);
@@ -50,7 +51,7 @@ function RO_action(actionName) {
         console.log("turn  to TV");
         if (TV_position < Robot_position) {
             var player = omx("../data/RO_turn_left.mp4", loop);
-        }else if(TV_position > Robot_position) {
+        } else if (TV_position > Robot_position) {
             var player = omx("../data/RO_turn_right.mp4", loop);
         }
         setTimeout(player.pause(), 1000);
