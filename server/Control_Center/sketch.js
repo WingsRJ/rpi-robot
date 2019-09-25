@@ -248,7 +248,7 @@ RO_actions[0] = function () {
 }
 RO_actions[1] = function () {
     socket.emit("RO_action", "RO_wake_up");
-    console.log("RO_action: " + "RO_wake up");
+    console.log("RO_action: " + "RO_wake_up");
     videoPlayer.attribute("src", "data/RO_wake up.mp4");
     videoPlayer.play();
 }
@@ -260,13 +260,13 @@ RO_actions[2] = function () {
 }
 RO_actions[3] = function () {
     socket.emit("RO_action", "RO_turn_to_User");
-    console.log("RO_action: " + "RO_turn to User");
+    console.log("RO_action: " + "RO_turn_to_User");
     videoPlayer.attribute("src", "data/RO_turn_left.mp4");
     videoPlayer.play();
 }
 RO_actions[4] = function () {
     socket.emit("RO_action", "RO_turn_to_TV");
-    console.log("RO_action: " + "RO_turn to TV");
+    console.log("RO_action: " + "RO_turn_to_TV");
     videoPlayer.attribute("src", "data/RO_turn_right.mp4");
     videoPlayer.play();
 }
