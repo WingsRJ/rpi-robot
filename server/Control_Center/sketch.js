@@ -11,10 +11,10 @@ const actionName = [
 
 const Ro_actionName = [
     "RO_reset",
-    "RO_wake up",
+    "RO_wake_up",
     "RO_here",
-    "RO_turn to User",
-    "RO_turn to TV",
+    "RO_turn_to_User",
+    "RO_turn_to_TV",
     "RO_wait",
     "RO_OK",
     "RO_sleep",
