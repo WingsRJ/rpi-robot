@@ -15,9 +15,8 @@ console.log("Server listening on port 3000");
 
 app.use("/Control_Center", express.static("Control_Center"));
 app.use("/TV", express.static("TV"));
-app.use(express.static("/libraries/p5.min.js"));
-app.use(express.static("/libraries/p5.dom.min.js"));
-app.use(express.static("/libraries/p5.sound.min.js"));
+app.use("/libraries",express.static("libraries"));
+
 
 io.sockets.on("connection", newConnection);
 
