@@ -16,7 +16,7 @@ console.log("Server listening on port 3000");
 app.use("/Control_Center", express.static("Control_Center"));
 app.use("/TV", express.static("TV"));
 app.use("/libraries", express.static("libraries"));
-app.use("/data", express.static("data"));
+app.use("../data", express.static("../data"));
 
 
 io.sockets.on("connection", newConnection);
