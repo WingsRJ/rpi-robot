@@ -13,8 +13,11 @@ var io = socket(server);
 
 console.log("Server listening on port 3000");
 
-app.use("/Control_Center", express.static(path.join(__dirname, "Control_Center")));
-app.use("/TV", express.static(path.join(__dirname, "TV")));
+app.use("/Control_Center", express.static("Control_Center"));
+app.use("/TV", express.static("TV"));
+app.use(express.static("/libraries/p5.min.js"));
+app.use(express.static("/libraries/p5.dom.min.js"));
+app.use(express.static("/libraries/p5.sound.min.js"));
 
 io.sockets.on("connection", newConnection);
 
