@@ -90,7 +90,7 @@ function setup() {
         nb.position(width + 300, 12 + 24 * i);
         //nb.mousePressed(TV_actions[i]);
         nb.mousePressed(function(){
-            console.log(this)
+            //console.log(this)
             let label = this.elt.innerText;
             socket.emit("TV_action", label);
             console.log("TV_action: " + label);
