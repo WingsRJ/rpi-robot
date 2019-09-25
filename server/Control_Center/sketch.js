@@ -88,7 +88,15 @@ function setup() {
     for (i = 0; i < TV_actionName.length; i++) {
         let nb = createButton(TV_actionName[i]);
         nb.position(width + 300, 12 + 24 * i);
-        nb.mousePressed(TV_actions[i]);
+        //nb.mousePressed(TV_actions[i]);
+        nb.mousePressed(function(){
+            console.log(this)
+            let label = this.elt.innerText;
+            socket.emit("TV_action", label);
+            console.log("TV_action: " + label);
+            videoPlayer.attribute("src", "../data/" + label + ".mp4");
+            videoPlayer.play();
+        });
         buttons.push(nb);
     }
 }
