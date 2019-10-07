@@ -8,7 +8,7 @@ function preload() {
     videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
     videoPlayer.hide();
-    //videoPlayer.onended(gotoFirstFrame);
+    //videoPlayer.onended();
 }
 
 function setup() {
@@ -17,7 +17,13 @@ function setup() {
     textSize(100);
     fill(255);
     socket = io.connect("http://192.168.2.7:3000");
-    socket.on("TV_action_name", action);
+    socket.on("TV_action_name", newAction);
+}
+
+function newAction(Msg) {
+    tag = Msg;
+    videoPlayer.attribute("src", "../data/" + Msg + ".mp4");
+    videoPlayer.play();
 }
 
 function draw() {
@@ -31,14 +37,4 @@ function keyPressed() {
         fullscreen(!fs);
         resizeCanvas(windowWidth, windowHeight);
     }
-}
-
-function gotoFirstFrame() {
-    videoPlayer.time(0);
-}
-
-function action(Msg) {
-    tag = Msg;
-    videoPlayer.attribute("src", "../data/" + Msg + ".mp4");
-    videoPlayer.play();
 }
