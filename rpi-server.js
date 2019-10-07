@@ -46,7 +46,7 @@ function RO_action(actionName) {
         setTimeout(() => {
             player.pause();
         }, 1000);
-    } else if (actionName == "RO_turn_to_User") {
+    } else if (actionName == "RO_turn_to_user") {
         console.log("turn to User");
         if (User_position < Robot_position) {
             var player = omx("../data/RO_turn_left.mp4","local",true);
