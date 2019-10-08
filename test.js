@@ -1,5 +1,5 @@
 var omx = require('omxdirector').enableNativeLoop();;
-playVideo("black", "w", 3);
+playVideo("black", "w", 10);
 
 function playVideo(_name, wait, delay) {
     omx.play("data/" + _name + ".mp4");
