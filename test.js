@@ -8,7 +8,7 @@ app.use("/data", express.static("data"));
 const omx = require('@augmentality/node-omx');
 const n = new omx.Player();
 
-n.open('data/black.mp4');
+n.open('http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4');
 n.play();
 setTimeout(() => {
     n.stop();
