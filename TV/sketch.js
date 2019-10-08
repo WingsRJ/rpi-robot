@@ -8,6 +8,7 @@ function preload() {
     videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
     videoPlayer.hide();
+    textSize(24);
     //videoPlayer.onended();
 }
 
@@ -24,12 +25,13 @@ function newAction(actionName) {
     console.log("TV_action: " + actionName);
     tag = actionName;
     videoPlayer.attribute("src", "../data/" + actionName + ".mp4");
+    console.log("../data/" + actionName + ".mp4");
     videoPlayer.play();
 }
 
 function draw() {
     image(videoPlayer, 0, 0, width, height);
-    text(tag, width / 2, height / 2);
+    text("TV_action: " + tag, width / 2, height / 2);
 }
 
 function keyPressed() {
