@@ -23,23 +23,18 @@ function newAction(actionName) {
     console.log("TV_action: " + actionName);
     tag = actionName;
     videoPlayer.attribute("src", "../data/" + actionName + ".mp4");
-    console.log("../data/" + actionName + ".mp4");
     videoPlayer.play();
 }
 
 function draw() {
     image(videoPlayer, 0, 0, width, height);
-    text("TV_action: " + tag, width / 2, height / 2);
+    //text("TV_action: " + tag, width / 2, height / 2);
 }
 
 function keyPressed() {
     if (keyCode === 13) {
-        if (fullscreen()) {
-            fullscreen(false);
-            resizeCanvas(windowWidth, windowHeight);
-        }else if(!fullscreen()) {
-            fullscreen(true);
-            resizeCanvas(displayWidth, displayHeight);
-        }
+        let fs = fullscreen();
+        fullscreen(!fs);
+        resizeCanvas(windowWidth, windowHeight);
     }
 }
