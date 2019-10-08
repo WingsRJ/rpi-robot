@@ -119,7 +119,6 @@ function playVideo(_name, wait, delay) {
             player.start();
         }, delay * 1000);
     }
-
 }
 
 function endByWait() {
