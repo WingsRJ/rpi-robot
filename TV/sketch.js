@@ -17,16 +17,15 @@ function setup() {
     textSize(100);
     fill(255);
     socket = io.connect("http://192.168.2.7:3000");
-    socket.on("TV_action_name", newAction);
-
-    function newAction(actionName) {
-        console.log("TV_action: " + actionName);
-        tag = actionName;
-        videoPlayer.attribute("src", "../data/" + actionName + ".mp4");
-        videoPlayer.play();
-    }
+    socket.on("TV_action", newAction);
 }
 
+function newAction(actionName) {
+    console.log("TV_action: " + actionName);
+    tag = actionName;
+    videoPlayer.attribute("src", "../data/" + actionName + ".mp4");
+    videoPlayer.play();
+}
 
 function draw() {
     image(videoPlayer, 0, 0, width, height);
