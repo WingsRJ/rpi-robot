@@ -8,7 +8,7 @@ setTimeout(() => {
     omxPlayer.pause();
 }, 3000);
 
-setTimeout(() => {
-    var omxPlayer1 = new OMX('data/RO_wait.mp4');
-    omxPlayer1.start();
-}, 6000);
+// setTimeout(() => {
+//     var omxPlayer1 = new OMX('data/RO_wait.mp4');
+//     omxPlayer1.start();
+// }, 6000);
