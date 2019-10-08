@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const path = require("path");
 const omx = require("@augmentality/node-omx");
 
 const TV_position = 60;
