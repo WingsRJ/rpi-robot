@@ -2,7 +2,7 @@ var omx = require('omxdirector').enableNativeLoop();;
 
 omx.play("data/black.mp4");
 setTimeout(() => {
-    omx.play("data/RO_wait.mp4" {
+    omx.play("data/RO_wait.mp4", {
         loop: true
     });
 }, 3000);
