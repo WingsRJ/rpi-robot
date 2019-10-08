@@ -8,7 +8,6 @@ function preload() {
     videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
     videoPlayer.hide();
-    //videoPlayer.onended();
 }
 
 function setup() {
@@ -35,8 +34,12 @@ function draw() {
 
 function keyPressed() {
     if (keyCode === 13) {
-        let fs = fullscreen();
-        fullscreen(!fs);
-        resizeCanvas(windowWidth, windowHeight);
+        if (fullscreen()) {
+            fullscreen(false);
+            resizeCanvas(windowWidth, windowHeight);
+        }else if(!fullscreen()) {
+            fullscreen(true);
+            resizeCanvas(displayWidth, displayHeight);
+        }
     }
 }
