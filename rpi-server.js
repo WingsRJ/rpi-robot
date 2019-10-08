@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const omx = require("node-omxplayer");
+const omx = require("@augmentality/node-omx");
 
 const TV_position = 60;
 const User_position = -60;
