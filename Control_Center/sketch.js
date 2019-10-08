@@ -1,4 +1,5 @@
-let videoPlayer;
+let RVP;
+let TVVP;
 let cvs;
 let buttons = new Array;
 let title = "Robot";
@@ -60,8 +61,8 @@ class Controllers {
                     socket.emit("RO_action", this.RO_actionName[n]);
                     console.log("RO_action: " + this.RO_actionName[n]);
                     if (n != 3 && n != 4) {
-                        videoPlayer.attribute("src", "../data/" + this.RO_actionName[n] + ".mp4");
-                        videoPlayer.play();
+                        RVP.attribute("src", "../data/" + this.RO_actionName[n] + ".mp4");
+                        RVP.play();
                     }
                 }
             }
@@ -70,8 +71,8 @@ class Controllers {
                 if (_x == n || _tpye == this.TV_actionName[n]) {
                     socket.emit("TV_action", this.TV_actionName[n]);
                     console.log("TV_action: " + this.TV_actionName[n]);
-                    videoPlayer.attribute("src", "../data/" + this.TV_actionName[n] + ".mp4");
-                    videoPlayer.play();
+                    TVVP.attribute("src", "../data/" + this.TV_actionName[n] + ".mp4");
+                    TVVP.play();
                 }
             }
         }
@@ -229,14 +230,17 @@ class Controllers {
 }
 
 function preload() {
-    videoPlayer = createVideo("../data/black.mp4");
-    videoPlayer.position(0, 0);
-    videoPlayer.hide();
+    RVP = createVideo("../data/black.mp4");
+    RVP.position(0, 0);
+    RVP.hide();
+    TVVP = createVideo("../data/black.mp4");
+    TVVP.position(0, 270);
+    TVVP.hide();
     //videoPlayer.onended(gotoFirstFrame);
 }
 
 function setup() {
-    cvs = createCanvas(480, 270);
+    cvs = createCanvas(480, 540);
     socket = io.connect("http://192.168.2.7:3000");
     background(0);
     noStroke();
@@ -271,7 +275,9 @@ function setup() {
 }
 
 function draw() {
-    image(videoPlayer, 0, 0, width, height);
+    image(RVP, 0, 0, width, height / 2);
+    image(TVVP, 0, 270, width, height / 2);
     fill(255);
-    text(title, width / 2, height / 2);
+    text("ROBOT", width / 2, height / 4);
+    text("TV", width / 2, height / 4 * 3);
 }
