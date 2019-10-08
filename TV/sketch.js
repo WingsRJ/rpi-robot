@@ -5,7 +5,7 @@ let tag;
 var socket;
 
 function preload() {
-    videoPlayer = createVideo("data/black.mp4");
+    videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
     videoPlayer.hide();
     //videoPlayer.onended();
@@ -22,7 +22,7 @@ function setup() {
     function newAction(actionName) {
         console.log("TV_action: " + actionName);
         tag = actionName;
-        videoPlayer.attribute("src", "data/" + actionName + ".mp4");
+        videoPlayer.attribute("src", "../data/" + actionName + ".mp4");
         videoPlayer.play();
     }
 }
