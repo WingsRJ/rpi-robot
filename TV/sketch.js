@@ -8,14 +8,13 @@ function preload() {
     videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
     videoPlayer.hide();
-    textSize(24);
     //videoPlayer.onended();
 }
 
 function setup() {
     cvs = createCanvas(windowWidth, windowHeight);
     textAlign(CENTER, CENTER);
-    textSize(100);
+    textSize(24);
     fill(255);
     socket = io.connect("http://192.168.2.7:3000");
     socket.on("TV_action", newAction);
