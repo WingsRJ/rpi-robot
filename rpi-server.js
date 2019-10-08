@@ -37,7 +37,7 @@ function newConnection(socket) {
             var player = new omx("data/RO_wake_up.mp4");
             player.start();
             setTimeout(() => {
-                //player.pause();
+                player.pause();
             }, 2000);
             //servo
         } else if (actionName == "RO_here") {
@@ -45,7 +45,7 @@ function newConnection(socket) {
             var player = new omx("data/RO_here.mp4");
             player.start();
             setTimeout(() => {
-                //player.pause();
+                player.pause();
             }, 1000);
         } else if (actionName == "RO_turn_to_user") {
             console.log("turn to User");
@@ -57,7 +57,7 @@ function newConnection(socket) {
                 player.start();
             }
             setTimeout(() => {
-                //player.pause();
+                player.pause();
             }, 1000);
             //servo
         } else if (actionName == "RO_turn_to_TV") {
@@ -70,7 +70,7 @@ function newConnection(socket) {
                 player.start();
             }
             setTimeout(() => {
-                //player.pause();
+                player.pause();
             }, 1000);
             //servo
         } else if (actionName == "RO_wait") {
@@ -82,14 +82,14 @@ function newConnection(socket) {
             var player = new omx("data/RO_OK.mp4");
             player.start();
             setTimeout(() => {
-                //player.pause();
+                player.pause();
             }, 1000);
         } else if (actionName == "RO_sleep") {
             console.log("sleep");
             var player = new omx("data/RO_sleep.mp4");
             player.start();
             setTimeout(() => {
-                //player.pause();
+                player.pause();
             }, 2000);
             //servo
         } else if (actionName == "RO_move_out") {
@@ -101,7 +101,7 @@ function newConnection(socket) {
                 var player = new omx("data/RO_sleep.mp4");
                 player.start();
                 setTimeout(() => {
-                    //player.pause();
+                    player.pause();
                 }, 2000);
             }, 3000);
         } else if (actionName == "RO_move_in") {
@@ -113,7 +113,7 @@ function newConnection(socket) {
                 var player = new omx("data/RO_move_in.mp4");
                 player.start();
                 setTimeout(() => {
-                    //player.pause();
+                    player.pause();
                 }, 3000);
             }, 2000);
         } else if (actionName == "RO_play(RE)") {
@@ -121,42 +121,42 @@ function newConnection(socket) {
             var player = new omx("data/RO_play(RE).mp4");
             player.start();
             setTimeout(() => {
-                //player.pause();
+                player.pause();
             }, 3000);
         } else if (actionName == "RO_superpower") {
             console.log("superpower")
             var player = new omx("data/RO_superpower.mp4");
             player.start();
             setTimeout(() => {
-                //player.pause();
+                player.pause();
             }, 3000);
         } else if (actionName == "RO_play(CT)") {
             console.log("play(CT)")
             var player = new omx("data/RO_play(CT).mp4");
             player.start();
             setTimeout(() => {
-                //player.pause();
+                player.pause();
             }, 3000);
         } else if (actionName == "RO_communicate") {
             console.log("communicate")
             var player = new omx("data/RO_communicate.mp4");
             player.start();
             setTimeout(() => {
-                //player.pause();
+                player.pause();
             }, 3000);
         } else if (actionName == "RO_play(R)") {
             console.log("play(R)")
             var player = new omx("data/RO_play(R).mp4");
             player.start();
             setTimeout(() => {
-                //player.pause();
+                player.pause();
             }, 3000);
         } else if (actionName == "RO_play(CVST)") {
             console.log("play(CVST)")
             var player = new omx("data/RO_play(CVST).mp4");
             player.start();
             setTimeout(() => {
-                //player.pause();
+                player.pause();
             }, 3000);
         } else if (actionName == "RO_reset") {
             console.log("reset")
@@ -169,11 +169,15 @@ function newConnection(socket) {
                 var player = new omx("data/black.mp4");
                 player.start();
                 () => {
-                    //player.pause();
+                    player.pause();
                 };
             }, 3000);
         } else {
             console.log("Error !");
         }
     }
+}
+
+function stopOnTheEnd(){
+
 }
