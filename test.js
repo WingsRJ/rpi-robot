@@ -4,4 +4,4 @@ player.start();
 setTimeout(() => {
     var player = new omx("data/RO_wake_up.mp4");
     player.start();
-},5000);
+},3000);
