@@ -1,19 +1,70 @@
-const express = require("express");
-const app = express();
-app.use("/Control_Center", express.static("Control_Center"));
-app.use("/TV", express.static("TV"));
-app.use("/libraries", express.static("libraries"));
-app.use("/data", express.static("data"));
-
 const omx = require('@augmentality/node-omx');
-const n = new omx.Player();
+const readline = require('readline');
 
-n.open('http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4');
-n.play();
-setTimeout(() => {
-    n.stop();
-}, 5000);
-setTimeout(() => {
-    n.open('data/black.mp4');
+readline.emitKeypressEvents(process.stdin);
+
+let state = 0;
+async function run() {
+    const n = new omx.Player();
+
+
+    n.onPlaybackState.subscribe((pState) => {
+        state = pState;
+        switch (state) {
+            case 0:
+                console.log('Stopped');
+                break;
+            case 1:
+                console.log('File loaded');
+                break;
+            case 2:
+                console.log('Playing');
+                break;
+            case 3:
+                console.log('Paused');
+                break;
+        }
+    });
+
+    await n.open('http://distribution.bbb3d.renderfarming.net/video/mp4/bbb_sunflower_1080p_30fps_normal.mp4');
     n.play();
-}, 6000);
+    n.setLoop(true); // Enable seamless looping
+
+    setInterval(() => {
+        if (state > 0) {
+            console.log('Playback position: ' + n.getTime());
+        }
+    }, 1000);
+
+    let speed = 1.0;
+    let paused = false;
+    process.stdin.setRawMode(true);
+    process.stdin.on('keypress', (str, key) => {
+        if (key.ctrl && key.name === 'q') {
+            process.exit();
+        } else {
+            switch (key.name) {
+                case 'up':
+                    speed += 0.01;
+                    console.log('Playback speed: ' + speed);
+                    n.setSpeed(speed);
+                    break;
+                case 'down':
+                    speed -= 0.01;
+                    console.log('Playback speed: ' + speed);
+                    n.setSpeed(speed);
+                    break;
+                case 'space':
+                    if (!paused) {
+                        n.pause();
+                        paused = true;
+                    } else {
+                        n.play();
+                        paused = false;
+                    }
+                    break;
+            }
+        }
+    });
+}
+run().then({});
