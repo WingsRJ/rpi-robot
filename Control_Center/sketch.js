@@ -3,6 +3,7 @@ let TVVP;
 let cvs;
 let buttons = new Array;
 let title = "Robot";
+let adress = "192.168.2.7"
 
 let socket;
 
@@ -241,13 +242,26 @@ function preload() {
 
 function setup() {
     cvs = createCanvas(480, 540);
-    socket = io.connect("http://192.168.2.7:3000");
+    socket = io.connect("http://" + adress + ":3000");
     background(0);
     noStroke();
     fill(255);
     textSize(48);
     textAlign(CENTER, CENTER);
     var controller = new Controllers;
+    let nb = createButton("All reset");
+    nb.position(width + 20, 12);
+    nb.mousePressed(function () {
+        socket.emit("TV_action", "All reset");
+        window.location.reload();
+    });
+    buttons.push(nb);
+    let nb = createButton("New TV");
+    nb.position(width + 20, 36);
+    nb.mousePressed(function () {
+        window.open("http://" + adress + ":3000/TV");
+    });
+    buttons.push(nb);
     for (let i = 0; i < controller.RO_actionName.length; i++) {
         let nb = createButton(controller.RO_actionName[i]);
         nb.position(width + 160, 12 + 24 * i);
@@ -266,7 +280,7 @@ function setup() {
     }
     for (let i = 0; i < controller.actionName.length; i++) {
         let nb = createButton(controller.actionName[i]);
-        nb.position(width + 20, 12 + 24 * i);
+        nb.position(width + 20, 60 + 24 * i);
         nb.mousePressed(function () {
             controller.groupAction(i);
         });

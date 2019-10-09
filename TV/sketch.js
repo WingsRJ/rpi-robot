@@ -1,6 +1,7 @@
 let videoPlayer;
 let cvs;
 let tag;
+let adress = "192.168.2.7"
 
 var socket;
 
@@ -16,21 +17,25 @@ function setup() {
     textAlign(CENTER, CENTER);
     textSize(24);
     fill(255);
-    socket = io.connect("http://192.168.2.7:3000");
+    socket = io.connect("http://" + adress + ":3000");
     socket.on("TV_action", newAction);
 }
 
 function newAction(_actionName) {
     console.log("TV_action: " + _actionName);
-    tag = _actionName;
-    videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
-    videoPlayer.play();
-    if (_actionName.match("News") == "News") {
-        setTimeout(() => {
-            tag = "TV_close"
-            videoPlayer.attribute("src", "../data/TV_close.mp4");
-            videoPlayer.play();
-        }, 20000);
+    if (_actionName == "All reset") {
+        window.location.reload();
+    } else {
+        tag = _actionName;
+        videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
+        videoPlayer.play();
+        if (_actionName.match("News") == "News") {
+            setTimeout(() => {
+                tag = "TV_close"
+                videoPlayer.attribute("src", "../data/TV_close.mp4");
+                videoPlayer.play();
+            }, 20000);
+        }
     }
 }
 
