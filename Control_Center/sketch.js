@@ -249,14 +249,14 @@ function setup() {
     textSize(48);
     textAlign(CENTER, CENTER);
     var controller = new Controllers;
-    let nb = createButton("All reset");
+    var nb = createButton("All reset");
     nb.position(width + 20, 12);
     nb.mousePressed(function () {
         socket.emit("TV_action", "All reset");
         window.location.reload();
     });
     buttons.push(nb);
-    let nb = createButton("New TV");
+    var nb = createButton("New TV");
     nb.position(width + 20, 36);
     nb.mousePressed(function () {
         window.open("http://" + adress + ":3000/TV");
