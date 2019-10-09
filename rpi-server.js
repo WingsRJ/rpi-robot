@@ -54,12 +54,7 @@ function newConnection(socket) {
             }
             //servo
         } else if (_actionName == "RO_wait") {
-<<<<<<< HEAD
-            var player = new omx("data/RO_wait.mp4");
-=======
             omx.play("data/RO_wait.mp4",{loop: true});
->>>>>>> /
-            player.start();
         } else if (_actionName == "RO_OK") {
             playVideo(_actionName);
         } else if (_actionName == "RO_sleep") {
