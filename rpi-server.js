@@ -85,7 +85,7 @@ function newConnection(socket) {
                 playVideo("black");
             }, 3000);
         } else {
-            console.log("Error !");
+           // console.log("Error !");
         }
     }
 }
