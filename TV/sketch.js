@@ -8,6 +8,7 @@ function preload() {
     videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
     videoPlayer.hide();
+
 }
 
 function setup() {
@@ -19,16 +20,23 @@ function setup() {
     socket.on("TV_action", newAction);
 }
 
-function newAction(actionName) {
-    console.log("TV_action: " + actionName);
-    tag = actionName;
-    videoPlayer.attribute("src", "../data/" + actionName + ".mp4");
+function newAction(_actionName) {
+    console.log("TV_action: " + _actionName);
+    tag = _actionName;
+    videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
     videoPlayer.play();
+    if (_actionName.match("News") == "News") {
+        setTimeout(() => {
+            tag = "TV_close"
+            videoPlayer.attribute("src", "../data/TV_close.mp4");
+            videoPlayer.play();
+        }, 20000);
+    }
 }
 
 function draw() {
     image(videoPlayer, 0, 0, width, height);
-    //text("TV_action: " + tag, width / 2, height / 2);
+    text("TV_action: " + tag, width / 2, height / 2);
 }
 
 function keyPressed() {

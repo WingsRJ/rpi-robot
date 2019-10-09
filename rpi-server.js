@@ -40,17 +40,17 @@ function newConnection(socket) {
         } else if (_actionName == "RO_turn_to_user") {
             console.log("turn to User");
             if (User_position < Robot_position) {
-                playVideo("RO_turn_left");
+                playVideo("RO_turn_left",{loop: false});
             } else if (User_position > Robot_position) {
-                playVideo("RO_turn_right");
+                playVideo("RO_turn_right",{loop: false});
             }
             //servo
         } else if (_actionName == "RO_turn_to_TV") {
             console.log("turn  to TV");
             if (TV_position < Robot_position) {
-                playVideo("RO_turn_left");
+                playVideo("RO_turn_left",{loop: false});
             } else if (TV_position > Robot_position) {
-                playVideo("RO_turn_right");
+                playVideo("RO_turn_right",{loop: false});
             }
             //servo
         } else if (_actionName == "RO_wait") {
@@ -95,9 +95,12 @@ function playVideo(_name, wait, delay) {
     if(omx.isPlaying()){
         omx.stop();
     }
-    omx.play("data/" + _name + ".mp4");
+    omx.play("data/" + _name + ".mp4",{loop: false});
     if (wait == "w") {
         setTimeout(() => {
+            if(omx.isPlaying()){
+                omx.stop();
+            }
             omx.play("data/RO_wait.mp4",{loop: true});
         }, delay * 1000);
     }
