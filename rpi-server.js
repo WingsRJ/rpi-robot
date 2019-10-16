@@ -31,11 +31,11 @@ function newConnection(socket) {
     socket.on("RO_action", RO_action);
 
     function RO_action(_actionName) {
-        socket.broadcast.emit("RO_action", _actionName);
-
         if (_actionName == "RO_wake_up") {
+            socket.broadcast.emit("RO_action", _actionName);
             //servo
         } else if (_actionName == "RO_here") {
+            socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_turn_to_user") {
             if (User_position < Robot_position) {
                 socket.broadcast.emit("RO_action","RO_turn_left");
@@ -51,18 +51,30 @@ function newConnection(socket) {
             }
             //servo
         } else if (_actionName == "RO_wait") {
+            socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_OK") {
+            socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_sleep") {
+            socket.broadcast.emit("RO_action", _actionName);
             //servo
         } else if (_actionName == "RO_move_out") {
+            socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_move_in") {
+            socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_play(RE)") {
+            socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_superpower") {
+            socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_play(CT)") {
+            socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_communicate") {
+            socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_play(R)") {
+            socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_play(CVST)") {
+            socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_reset") {
+            socket.broadcast.emit("RO_action", _actionName);
             //servo
         } else {
            // console.log("Error !");

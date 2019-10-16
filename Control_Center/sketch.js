@@ -234,10 +234,11 @@ function preload() {
     RVP = createVideo("../data/black.mp4");
     RVP.position(0, 0);
     RVP.hide();
+    RVP.volume(0);
     TVVP = createVideo("../data/black.mp4");
     TVVP.position(0, 270);
     TVVP.hide();
-    //videoPlayer.onended(gotoFirstFrame);
+    TVVP.volume(0);
 }
 
 function setup() {

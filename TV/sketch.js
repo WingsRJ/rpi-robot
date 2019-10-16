@@ -1,4 +1,5 @@
 let videoPlayer;
+let audioPlayer;
 let cvs;
 let tag;
 let adress = "192.168.2.7"
@@ -6,6 +7,7 @@ let adress = "192.168.2.7"
 var socket;
 
 function preload() {
+    audioPlayer = createAudio("../data/我在.mp3");
     videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
     videoPlayer.hide();
@@ -27,14 +29,17 @@ function newAction(_actionName) {
         window.location.reload();
     } else {
         tag = _actionName;
-        videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
-        videoPlayer.play();
         if (_actionName.match("News") == "News") {
+            videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
+            videoPlayer.play();
             setTimeout(() => {
                 tag = "TV_close"
                 videoPlayer.attribute("src", "../data/TV_close.mp4");
                 videoPlayer.play();
             }, 20000);
+        }else{
+            videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
+            videoPlayer.play();
         }
     }
 }
