@@ -30,12 +30,12 @@ class Controllers {
             "RO_sleep",
             "RO_move_out",
             "RO_move_in",
-            "RO_play(RE)",
+            "RO_play_re_embodiment",
             "RO_superpower",
-            "RO_play(CT)",
+            "RO_play_control",
             "RO_communicate",
-            "RO_play(R)",
-            "RO_play(CVST)"
+            "RO_play_representation",
+            "RO_play_conversation"
         ]
         this.TV_actionName = [
             "TV_reset",
@@ -45,10 +45,10 @@ class Controllers {
             "TV_sleep",
             "TV_move_out",
             "TV_move_in",
-            "TV_play(RE)",
-            "TV_play(CT)",
-            "TV_play(R)",
-            "TV_play(CVST)",
+            "TV_play_re_embodiment",
+            "TV_play_control",
+            "TV_play_representation",
+            "TV_play_conversation",
             "TV_communicate",
             "TV_talk",
             "TV_News_1"
@@ -164,11 +164,11 @@ class Controllers {
             this.action("TV_open");
         }, 1000);
         setTimeout(() => {
-            this.action("RO_play(CT)");
+            this.action("RO_play_control");
         }, 3000);
         setTimeout(() => {
             this.action("RO_superpower");
-            this.action("TV_play(CT)");
+            this.action("TV_play_control");
         }, 5000);
         setTimeout(() => {
             this.action("RO_turn_to_User");
@@ -191,8 +191,8 @@ class Controllers {
             this.action("RO_turn_to_User");
         }, 3000);
         setTimeout(() => {
-            this.action("RO_play(R)");
-            this.action("TV_play(R)");
+            this.action("RO_play_representation");
+            this.action("TV_play_representation");
         }, 4000);
         setTimeout(() => {
             this.action("RO_wait");
@@ -206,13 +206,13 @@ class Controllers {
         this.action("RO_turn_to_User");
         this.action("TV_wake");
         setTimeout(() => {
-            this.action("RO_play(CT)");
+            this.action("RO_play_control");
         }, 1000);
         setTimeout(() => {
             this.action("TV_talk");
         }, 3000);
         setTimeout(() => {
-            this.action("TV_play(CVST)");
+            this.action("TV_play_conversation");
         }, 5000);
         setTimeout(() => {
             this.action("RO_wait");

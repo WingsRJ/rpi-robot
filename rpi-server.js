@@ -62,17 +62,17 @@ function newConnection(socket) {
             socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_move_in") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_play(RE)") {
+        } else if (_actionName == "RO_play_re_embodiment") {
             socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_superpower") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_play(CT)") {
+        } else if (_actionName == "RO_play_control") {
             socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_communicate") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_play(R)") {
+        } else if (_actionName == "RO_play_representation") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_play(CVST)") {
+        } else if (_actionName == "RO_play_conversation") {
             socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName == "RO_reset") {
             socket.broadcast.emit("RO_action", _actionName);
