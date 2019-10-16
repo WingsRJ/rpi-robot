@@ -34,8 +34,10 @@ function newAction(_actionName) {
             let r=random(0,2);
             if(r<1){
                 audioPlayer.attribute("src", "../data/S_here_1.mp3");
+                console.log("RO_action: " + _actionName+"1");
             }else{
                 audioPlayer.attribute("src", "../data/S_here_2.mp3");
+                console.log("RO_action: " + _actionName+"2");
             }
             audioPlayer.play();
         }else if (_actionName.match("OK") == "OK") {
