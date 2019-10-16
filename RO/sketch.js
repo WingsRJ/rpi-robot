@@ -31,23 +31,21 @@ function newAction(_actionName) {
         videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
         videoPlayer.play();
         if (_actionName.match("here") == "here") {
-            let r=random(0,2);
-            if(r<1){
-                audioPlayer.attribute("src", "../data/S_here_1.mp3");
-                console.log("RO_action: " + _actionName+"1");
-            }else{
-                audioPlayer.attribute("src", "../data/S_here_2.mp3");
-                console.log("RO_action: " + _actionName+"2");
-            }
-            audioPlayer.play();
+            // let r=random(0,2);
+            // if(r<1){
+            //     audioPlayer.attribute("src", "../data/S_here_1.mp3");
+            // }else{
+            //     audioPlayer.attribute("src", "../data/S_here_2.mp3");
+            // }
+            // audioPlayer.play();
         }else if (_actionName.match("OK") == "OK") {
-            let r=random(0,2);
-            if(r<1){
-                audioPlayer.attribute("src", "../data/S_OK_1.mp3");
-            }else{
-                audioPlayer.attribute("src", "../data/S_OK_2.mp3");
-            }
-            audioPlayer.play();
+            // let r=random(0,2);
+            // if(r<1){
+            //     audioPlayer.attribute("src", "../data/S_OK_1.mp3");
+            // }else{
+            //     audioPlayer.attribute("src", "../data/S_OK_2.mp3");
+            // }
+            // audioPlayer.play();
         }
     }
 }
