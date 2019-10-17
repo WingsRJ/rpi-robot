@@ -142,7 +142,7 @@ class Controllers {
         this.action("RO_move_out");
         this.action("TV_move_in");
         setTimeout(() => {
-            this.action("TV_play(RE)");
+            this.action("TV_play_re_embodiment");
         }, 3000);
         setTimeout(() => {
             this.action("TV_News_1");
@@ -206,7 +206,7 @@ class Controllers {
         this.action("RO_turn_to_User");
         this.action("TV_wake");
         setTimeout(() => {
-            this.action("RO_play_control");
+            this.action("RO_play_conversation");
         }, 1000);
         setTimeout(() => {
             this.action("TV_talk");
