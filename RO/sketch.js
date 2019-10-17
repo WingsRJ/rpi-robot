@@ -10,6 +10,7 @@ function preload() {
     //audioPlayer = createAudio("../data/S_here_1.mp3");
     videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
+    videoPlayer.volume(1);
     videoPlayer.hide();
 }
 
@@ -31,7 +32,7 @@ function newAction(_actionName) {
         if (_actionName.match("here") == "here") {
             let r = random(0, 2);
             if (r < 1) {
-                videoPlayerr.attribute("src", "../data/RO_here_1.mp4");
+                videoPlayer.attribute("src", "../data/RO_here_1.mp4");
             } else {
                 videoPlayer.attribute("src", "../data/RO_here_2.mp4");
             }

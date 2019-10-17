@@ -10,6 +10,7 @@ function preload() {
     //audioPlayer = createAudio("../data/S_here_1.mp3");
     videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
+    videoPlayer.volume(1);
     videoPlayer.hide();
 
 }
