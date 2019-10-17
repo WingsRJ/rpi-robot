@@ -12,7 +12,6 @@ function preload() {
     videoPlayer.position(displayWidth, 0);
     videoPlayer.volume(1);
     videoPlayer.hide();
-
 }
 
 function setup() {

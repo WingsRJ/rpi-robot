@@ -11,7 +11,7 @@ function preload() {
     videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
     videoPlayer.volume(1);
-    //videoPlayer.hide();
+    videoPlayer.hide();
 }
 
 function setup() {
