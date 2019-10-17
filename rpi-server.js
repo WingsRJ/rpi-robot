@@ -32,6 +32,7 @@ function newConnection(socket) {
     socket.on("RO_action", RO_action);
 
     function RO_action(_actionName) {
+        console.log("RO_action: " + _actionName);
         if (_actionName == "RO_wake_up") {
             socket.broadcast.emit("RO_action", _actionName);
             //servo
