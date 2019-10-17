@@ -7,7 +7,7 @@ let adress = "192.168.2.7"
 var socket;
 
 function preload() {
-    audioPlayer = createAudio("../data/S_here_1.mp3");
+    //audioPlayer = createAudio("../data/S_here_1.mp3");
     videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
     videoPlayer.hide();
@@ -32,16 +32,16 @@ function newAction(_actionName) {
         if (_actionName.match("here") == "here") {
             let r = random(0, 2);
             if (r < 1) {
-                videoPlayerr.attribute("src", "../data/RO_here_1.mp3");
+                videoPlayerr.attribute("src", "../data/RO_here_1.mp4");
             } else {
-                videoPlayer.attribute("src", "../data/RO_here_2.mp3");
+                videoPlayer.attribute("src", "../data/RO_here_2.mp4");
             }
         } else if (_actionName.match("OK") == "OK") {
             let r = random(0, 2);
             if (r < 1) {
-                videoPlayer.attribute("src", "../data/RO_OK_1.mp3");
+                videoPlayer.attribute("src", "../data/RO_OK_1.mp4");
             } else {
-                videoPlayer.attribute("src", "../data/RO_OK_2.mp3");
+                videoPlayer.attribute("src", "../data/RO_OK_2.mp4");
             }
         } else if (_actionName.match("News") == "News") {
             videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
