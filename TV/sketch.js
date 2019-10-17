@@ -1,5 +1,5 @@
 let videoPlayer;
-let audioPlayer;
+//let audioPlayer;
 let cvs;
 let tag;
 let adress = "192.168.2.7"
