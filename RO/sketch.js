@@ -8,7 +8,7 @@ var socket;
 function preload() {
     videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
-    //videoPlayer.volume(1);
+    videoPlayer.volume(1);
     videoPlayer.hide();
 }
 
@@ -45,6 +45,7 @@ function newAction(_actionName) {
             videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
         }
         videoPlayer.play();
+        videoPlayer.volume(1);
     }
 }
 
