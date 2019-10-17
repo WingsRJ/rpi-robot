@@ -1,5 +1,4 @@
 let videoPlayer;
-//let audioPlayer;
 let cvs;
 let tag;
 let adress = "192.168.2.7"
@@ -7,7 +6,6 @@ let adress = "192.168.2.7"
 var socket;
 
 function preload() {
-    //audioPlayer = createAudio("../data/S_here_1.mp3");
     videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
     videoPlayer.volume(1);
