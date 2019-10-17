@@ -59,6 +59,7 @@ function newAction(_actionName) {
 }
 
 function draw() {
+    background(0);
     image(videoPlayer, 0, 0, width, height);
     text("TV_action: " + tag, width / 2, height / 2);
 }
