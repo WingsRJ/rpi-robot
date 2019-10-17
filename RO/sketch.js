@@ -24,6 +24,7 @@ function setup() {
 }
 
 function newAction(_actionName) {
+    background(0);
     console.log("RO_action: " + _actionName);
     if (_actionName == "All reset") {
         window.location.reload();
@@ -51,7 +52,6 @@ function newAction(_actionName) {
 }
 
 function draw() {
-    background(0);
     image(videoPlayer, 0, 0, width, height);
     text("RO_action: " + tag, width / 2, height / 2);
 }
