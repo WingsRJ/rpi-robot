@@ -1,4 +1,5 @@
 let videoPlayer;
+let audioPlayer;
 let cvs;
 let tag;
 let adress = "192.168.2.7"
@@ -6,6 +7,7 @@ let adress = "192.168.2.7"
 var socket;
 
 function preload() {
+    audioPlayer = createAudio("../data/S_here_1.mp4");
     videoPlayer = createVideo("../data/black.mp4");
     videoPlayer.position(displayWidth, 0);
     videoPlayer.volume(1);
@@ -28,14 +30,16 @@ function newAction(_actionName) {
     } else {
         tag = _actionName;
         if (_actionName.match("here") == "here") {
-            let r = random(0, 2);
+            var r = random(0, 2);
             if (r < 1) {
                 videoPlayer.attribute("src", "../data/RO_here_1.mp4");
+                audioPlayer.attribute("src", "../data/S_here_1.mp4");
             } else {
                 videoPlayer.attribute("src", "../data/RO_here_2.mp4");
+                audioPlayer.attribute("src", "../data/S_here_2.mp4");
             }
         } else if (_actionName.match("OK") == "OK") {
-            let r = random(0, 2);
+            var r = random(0, 2);
             if (r < 1) {
                 videoPlayer.attribute("src", "../data/RO_OK_1.mp4");
             } else {
@@ -45,7 +49,7 @@ function newAction(_actionName) {
             videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
         }
         videoPlayer.play();
-        videoPlayer.volume(1);
+        audioPlayer.play();
     }
 }
 

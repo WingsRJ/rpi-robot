@@ -53,7 +53,6 @@ function newAction(_actionName) {
             videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
         }
         videoPlayer.play();
-        videoPlayer.volume(1);
     }
 }
 
