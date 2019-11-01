@@ -2,7 +2,7 @@ let RVP;
 let TVVP;
 let cvs;
 let buttons = new Array;
-let tag = "";
+let tag = "black";
 
 let socket;
 
@@ -56,11 +56,11 @@ class Controllers {
         this.TV_actionNum = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     }
 
-    action(_tpye, _x) {
+    action(_type) {
         if (_type != tag) {
-            if (_tpye.match("RO") == "RO") {
+            if (_type.match("RO") == "RO") {
                 for (let n = 0; n < this.RO_actionName.length; n++) {
-                    if (_tpye == this.RO_actionName[n]) {
+                    if (_type == this.RO_actionName[n]) {
                         let id = this.RO_actionName[n] + "_" + Math.floor(random(1, this.RO_actionNum[n] + 1));
                         socket.emit("RO_action", id);
                         console.log("RO_action: " + id);
@@ -70,9 +70,9 @@ class Controllers {
                         }
                     }
                 }
-            } else if (_tpye.match("TV") == "TV") {
+            } else if (_type.match("TV") == "TV") {
                 for (let n = 0; n < this.TV_actionName.length; n++) {
-                    if (_tpye == this.TV_actionName[n]) {
+                    if (_type == this.TV_actionName[n]) {
                         let id = this.TV_actionName[n] + "_" + Math.floor(random(1, this.TV_actionNum[n] + 1));
                         socket.emit("TV_action", id);
                         console.log("TV_action: " + id);
@@ -158,7 +158,7 @@ class Controllers {
             setTimeout(() => {
                 console.log("Script END!");
             }, 3000);
-        }, 9000);
+        }, 10000);
     }
     Control() {
         this.action("RO_turn_to_TV");
@@ -181,7 +181,7 @@ class Controllers {
             setTimeout(() => {
                 console.log("Script END!");
             }, 3000);
-        }, 7000);
+        }, 10000);
     }
     Representative() {
         this.action("RO_turn_to_User");
@@ -203,7 +203,7 @@ class Controllers {
             setTimeout(() => {
                 console.log("Script END!");
             }, 3000);
-        }, 6000);
+        }, 10000);
     }
     Conversation() {
         this.action("RO_turn_to_User");
@@ -223,7 +223,7 @@ class Controllers {
             setTimeout(() => {
                 console.log("Script END!");
             }, 3000);
-        }, 7000);
+        }, 10000);
     }
     Sleep() {
         this.action("RO_sleep");
@@ -270,7 +270,7 @@ function setup() {
         let nb = createButton(controller.RO_actionName[i]);
         nb.position(width + 160, 12 + 24 * i);
         nb.mousePressed(function () {
-            controller.action("RO", i);
+            controller.action(controller.RO_actionName[i]);
         });
         buttons.push(nb);
     }
@@ -278,7 +278,7 @@ function setup() {
         let nb = createButton(controller.TV_actionName[i]);
         nb.position(width + 300, 12 + 24 * i);
         nb.mousePressed(function () {
-            controller.action("TV", i);
+            controller.action(controller.TV_actionName[i]);
         });
         buttons.push(nb);
     }

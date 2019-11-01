@@ -18,7 +18,7 @@ app.use("/libraries", express.static("libraries"));
 app.use("/data", express.static("data"));
 
 server_socket.on("connect",newServerConnection);
-function newServerConnection(server_socket) {
+function newServerConnection() {
     console.log('rpi-server connection!');
     console.log("rpi-server ID: " + server_socket.id);
 }
