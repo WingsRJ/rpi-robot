@@ -2,7 +2,7 @@ let RVP;
 let TVVP;
 let cvs;
 let buttons = new Array;
-let title = "Robot";
+let tag = "";
 
 let socket;
 
@@ -57,28 +57,31 @@ class Controllers {
     }
 
     action(_tpye, _x) {
-        if (_tpye.match("RO") == "RO") {
-            for (let n = 0; n < this.RO_actionName.length; n++) {
-                if (_x == n || _tpye == this.RO_actionName[n]) {
-                    let id = this.RO_actionName[n] + "_" + Math.floor(random(1, this.RO_actionNum[n] + 1));
-                    socket.emit("RO_action", id);
-                    console.log("RO_action: " + id);
-                    if (n != 3 && n != 4) {
-                        RVP.attribute("src", "../data/" + id + ".mp4");
-                        RVP.play();
+        if (_type != tag) {
+            if (_tpye.match("RO") == "RO") {
+                for (let n = 0; n < this.RO_actionName.length; n++) {
+                    if (_tpye == this.RO_actionName[n]) {
+                        let id = this.RO_actionName[n] + "_" + Math.floor(random(1, this.RO_actionNum[n] + 1));
+                        socket.emit("RO_action", id);
+                        console.log("RO_action: " + id);
+                        if (n != 3 && n != 4) {
+                            RVP.attribute("src", "../data/" + id + ".mp4");
+                            RVP.play();
+                        }
+                    }
+                }
+            } else if (_tpye.match("TV") == "TV") {
+                for (let n = 0; n < this.TV_actionName.length; n++) {
+                    if (_tpye == this.TV_actionName[n]) {
+                        let id = this.TV_actionName[n] + "_" + Math.floor(random(1, this.TV_actionNum[n] + 1));
+                        socket.emit("TV_action", id);
+                        console.log("TV_action: " + id);
+                        TVVP.attribute("src", "../data/" + id + ".mp4");
+                        TVVP.play();
                     }
                 }
             }
-        } else if (_tpye.match("TV") == "TV") {
-            for (let n = 0; n < this.TV_actionName.length; n++) {
-                if (_x == n || _tpye == this.TV_actionName[n]) {
-                    let id = this.TV_actionName[n] + "_" + Math.floor(random(1, this.TV_actionNum[n] + 1));
-                    socket.emit("TV_action", id);
-                    console.log("TV_action: " + id);
-                    TVVP.attribute("src", "../data/" + id + ".mp4");
-                    TVVP.play();
-                }
-            }
+            tag = _type;
         }
     }
 
@@ -150,9 +153,6 @@ class Controllers {
         setTimeout(() => {
             this.action("TV_News");
         }, 5000);
-        setTimeout(() => {
-            this.action("RO_move_in");
-        }, 7000);
         setTimeout(() => {
             this.action("RO_wait");
             setTimeout(() => {

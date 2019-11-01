@@ -31,8 +31,8 @@ function newAction(_actionName) {
         if (_actionName.match("News") == "News") {
             videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
             setTimeout(() => {
-                tag = "TV_close"
-                videoPlayer.attribute("src", "../data/TV_close.mp4");
+                tag = "TV_close_1"
+                videoPlayer.attribute("src", "../data/TV_close_1.mp4");
                 videoPlayer.play();
             }, 20000);
         } else {

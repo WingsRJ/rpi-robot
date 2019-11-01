@@ -70,7 +70,7 @@ function newConnection(socket) {
             socket.broadcast.emit("RO_action", _actionName);
             //servo
         } else {
-            socket.broadcast.emit("RO_action", _actionName);
+            //socket.broadcast.emit("RO_action", _actionName);
         }
     }
 }
