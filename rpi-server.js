@@ -7,8 +7,6 @@ var io = socket(server);
 
 console.log("Server listening on port 3000");
 
-app.use("/Control_Center", express.static("Control_Center"));
-app.use("/TV", express.static("TV"));
 app.use("/RO", express.static("RO"));
 app.use("/libraries", express.static("libraries"));
 app.use("/data", express.static("data"));
@@ -22,7 +20,7 @@ io.sockets.on("connection", newConnection);
 function newConnection(socket) {
     console.log("new connection: " + socket.id);
 
-    socket.on("RO_action", RO_action);
+    socket.on("mac_msg", RO_action);
 
     function RO_action(_actionName) {
         console.log("RO_action: " + _actionName);
