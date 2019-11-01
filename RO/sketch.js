@@ -29,23 +29,7 @@ function newAction(_actionName) {
         window.location.reload();
     } else {
         tag = _actionName;
-        if (_actionName.match("here") == "here") {
-            var r = random(0, 2);
-            if (r < 1) {
-                videoPlayer.attribute("src", "../data/RO_here_1.mp4");
-            } else {
-                videoPlayer.attribute("src", "../data/RO_here_2.mp4");
-            }
-        } else if (_actionName.match("OK") == "OK") {
-            var r = random(0, 2);
-            if (r < 1) {
-                videoPlayer.attribute("src", "../data/RO_OK_1.mp4");
-            } else {
-                videoPlayer.attribute("src", "../data/RO_OK_2.mp4");
-            }
-        } else {
-            videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
-        }
+        videoPlayer.attribute("src", "../data/" + _actionName + ".mp4");
         videoPlayer.play();
     }
 }

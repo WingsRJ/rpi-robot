@@ -50,18 +50,21 @@ class Controllers {
             "TV_play_conversation",
             "TV_communicate",
             "TV_talk",
-            "TV_News_1"
+            "TV_News"
         ]
+        this.RO_actionNum = [1, 1, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        this.TV_actionNum = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     }
 
     action(_tpye, _x) {
         if (_tpye.match("RO") == "RO") {
             for (let n = 0; n < this.RO_actionName.length; n++) {
                 if (_x == n || _tpye == this.RO_actionName[n]) {
-                    socket.emit("RO_action", this.RO_actionName[n]);
-                    console.log("RO_action: " + this.RO_actionName[n]);
+                    let id = this.RO_actionName[n] + "_" + Math.floor(random(1, this.RO_actionNum[n] + 1));
+                    socket.emit("RO_action", id);
+                    console.log("RO_action: " + id);
                     if (n != 3 && n != 4) {
-                        RVP.attribute("src", "../data/" + this.RO_actionName[n] + ".mp4");
+                        RVP.attribute("src", "../data/" + id + ".mp4");
                         RVP.play();
                     }
                 }
@@ -69,9 +72,10 @@ class Controllers {
         } else if (_tpye.match("TV") == "TV") {
             for (let n = 0; n < this.TV_actionName.length; n++) {
                 if (_x == n || _tpye == this.TV_actionName[n]) {
-                    socket.emit("TV_action", this.TV_actionName[n]);
-                    console.log("TV_action: " + this.TV_actionName[n]);
-                    TVVP.attribute("src", "../data/" + this.TV_actionName[n] + ".mp4");
+                    let id = this.TV_actionName[n] + "_" + Math.floor(random(1, this.TV_actionNum[n] + 1));
+                    socket.emit("TV_action", id);
+                    console.log("TV_action: " + id);
+                    TVVP.attribute("src", "../data/" + id + ".mp4");
                     TVVP.play();
                 }
             }
@@ -128,7 +132,7 @@ class Controllers {
         }, 6000);
     }
     Answer() {
-        this.action("RO_OK", 6);
+        this.action("RO_OK");
         setTimeout(() => {
             this.action("RO_wait");
             this.action("TV_open");
@@ -144,7 +148,7 @@ class Controllers {
             this.action("TV_play_re_embodiment");
         }, 3000);
         setTimeout(() => {
-            this.action("TV_News_1");
+            this.action("TV_News");
         }, 5000);
         setTimeout(() => {
             this.action("RO_move_in");
@@ -195,7 +199,7 @@ class Controllers {
         }, 4000);
         setTimeout(() => {
             this.action("RO_wait");
-            this.action("TV_News_1");
+            this.action("TV_News");
             setTimeout(() => {
                 console.log("Script END!");
             }, 3000);
@@ -215,7 +219,7 @@ class Controllers {
         }, 5000);
         setTimeout(() => {
             this.action("RO_wait");
-            this.action("TV_News_1");
+            this.action("TV_News");
             setTimeout(() => {
                 console.log("Script END!");
             }, 3000);
