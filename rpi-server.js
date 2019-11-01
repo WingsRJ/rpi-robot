@@ -5,10 +5,6 @@ var socket = require("socket.io");
 var server = app.listen(3000);
 var io = socket(server);
 
-const TV_position = 60;
-const User_position = -60;
-var Robot_position = 0;
-
 console.log("Server listening on port 3000");
 
 app.use("/Control_Center", express.static("Control_Center"));
@@ -16,6 +12,10 @@ app.use("/TV", express.static("TV"));
 app.use("/RO", express.static("RO"));
 app.use("/libraries", express.static("libraries"));
 app.use("/data", express.static("data"));
+
+const TV_position = 60;
+const User_position = -60;
+var Robot_position = 0;
 
 io.sockets.on("connection", newConnection);
 
