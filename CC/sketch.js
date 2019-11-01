@@ -263,7 +263,7 @@ function setup() {
     var nb = createButton("New TV");
     nb.position(width + 20, 36);
     nb.mousePressed(function () {
-        window.open("http://" + adress + ":3000/TV");
+        window.open("http://localhost:3000/TV");
     });
     buttons.push(nb);
     for (let i = 0; i < controller.RO_actionName.length; i++) {

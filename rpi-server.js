@@ -24,53 +24,53 @@ function newConnection(socket) {
 
     function RO_action(_actionName) {
         console.log("RO_action: " + _actionName);
-        if (_actionName == "RO_wake_up") {
+        if (_actionName.mach("RO_wake_up") == "RO_wake_up") {
             socket.broadcast.emit("RO_action", _actionName);
             //servo
-        } else if (_actionName == "RO_here") {
+        } else if (_actionName.mach("RO_here") == "RO_here") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_turn_to_user") {
+        } else if (_actionName.mach("RO_turn_to_user") == "RO_turn_to_user") {
             if (User_position < Robot_position) {
-                socket.broadcast.emit("RO_action","RO_turn_left");
+                socket.broadcast.emit("RO_action","RO_turn_left_1");
             } else if (User_position > Robot_position) {
-                socket.broadcast.emit("RO_action","RO_turn_right");
+                socket.broadcast.emit("RO_action","RO_turn_right_1");
             }
             //servo
-        } else if (_actionName == "RO_turn_to_TV") {
+        } else if (_actionName.mach("RO_turn_to_TV") == "RO_turn_to_TV") {
             if (TV_position < Robot_position) {
-                socket.broadcast.emit("RO_action","RO_turn_left");
+                socket.broadcast.emit("RO_action","RO_turn_left_1");
             } else if (TV_position > Robot_position) {
-                socket.broadcast.emit("RO_action","RO_turn_right");
+                socket.broadcast.emit("RO_action","RO_turn_right_1");
             }
             //servo
-        } else if (_actionName == "RO_wait") {
+        } else if (_actionName.mach("RO_wait") == "RO_wait") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_OK") {
+        } else if (_actionName.mach("RO_OK") == "RO_OK") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_sleep") {
+        } else if (_actionName.mach("RO_sleep") == "RO_sleep") {
             socket.broadcast.emit("RO_action", _actionName);
             //servo
-        } else if (_actionName == "RO_move_out") {
+        } else if (_actionName.mach("RO_move_out") == "RO_move_out") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_move_in") {
+        } else if (_actionName.mach("RO_move_in") == "RO_move_in") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_play_re_embodiment") {
+        } else if (_actionName.mach("RO_play_re_embodiment") == "RO_play_re_embodiment") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_superpower") {
+        } else if (_actionName.mach("RO_superpower") == "RO_superpower") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_play_control") {
+        } else if (_actionName.mach("RO_play_control") == "RO_play_control") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_communicate") {
+        } else if (_actionName.mach("RO_communicate") == "RO_communicate") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_play_representation") {
+        } else if (_actionName.mach("RO_play_representation") == "RO_play_representation") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_play_conversation") {
+        } else if (_actionName.mach("RO_play_conversation") == "RO_play_conversation") {
             socket.broadcast.emit("RO_action", _actionName);
-        } else if (_actionName == "RO_reset") {
+        } else if (_actionName.mach("RO_reset") == "RO_reset") {
             socket.broadcast.emit("RO_action", _actionName);
             //servo
         } else {
-           // console.log("Error !");
+            socket.broadcast.emit("RO_action", _actionName);
         }
     }
 }
