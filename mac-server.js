@@ -2,8 +2,11 @@ const express = require("express");
 const app = express();
 
 var socket = require("socket.io");
+var server_socket;
 var server = app.listen(3000);
 var io = socket(server);
+
+let adress = "192.168.2.7"
 
 console.log("Server listening on port 3000");
 
@@ -12,6 +15,9 @@ app.use("/TV", express.static("TV"));
 app.use("/RO", express.static("RO"));
 app.use("/libraries", express.static("libraries"));
 app.use("/data", express.static("data"));
+
+server_socket = io.connect("http://" + adress + ":3000");
+server_socket.on("TV_action", newAction);
 
 io.sockets.on("connection", newConnection);
 

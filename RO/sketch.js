@@ -19,7 +19,7 @@ function setup() {
     textAlign(CENTER, CENTER);
     textSize(24);
     fill(255);
-    socket = io.connect("http://" + adress + ":3000");
+    socket = io.connect("http://localhost:3000");
     socket.on("RO_action", newAction);
 }
 

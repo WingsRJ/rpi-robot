@@ -22,13 +22,6 @@ io.sockets.on("connection", newConnection);
 function newConnection(socket) {
     console.log("new connection: " + socket.id);
 
-    socket.on("TV_action", TV_action);
-
-    function TV_action(_actionName) {
-        socket.broadcast.emit("TV_action", _actionName);
-        console.log("TV_action: " + _actionName);
-    }
-
     socket.on("RO_action", RO_action);
 
     function RO_action(_actionName) {

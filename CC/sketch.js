@@ -3,7 +3,6 @@ let TVVP;
 let cvs;
 let buttons = new Array;
 let title = "Robot";
-let adress = "192.168.2.7"
 
 let socket;
 
@@ -243,7 +242,7 @@ function preload() {
 
 function setup() {
     cvs = createCanvas(480, 540);
-    socket = io.connect("http://" + adress + ":3000");
+    socket = io.connect("http://localhost:3000");
     background(0);
     noStroke();
     fill(255);
