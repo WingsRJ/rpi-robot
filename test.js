@@ -13,7 +13,7 @@
 
 var i2cBus = require("i2c-bus");
 
-var Pca9685Driver = require("../").Pca9685Driver;
+var Pca9685Driver = require("pca9685").Pca9685Driver;
 
 
 // PCA9685 options
