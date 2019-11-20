@@ -5,6 +5,9 @@ var socket = require("socket.io");
 var server = app.listen(3000);
 var io = socket(server);
 
+var i2cBus = require("i2c-bus");
+var Pca9685Driver = require("pca9685").Pca9685Driver;
+
 console.log("Server listening on port 3000");
 
 app.use("/RO", express.static("RO"));
