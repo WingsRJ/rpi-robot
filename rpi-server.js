@@ -7,6 +7,12 @@ var io = socket(server);
 
 var i2cBus = require("i2c-bus");
 var Pca9685Driver = require("pca9685").Pca9685Driver;
+var options = {
+    i2c: i2cBus.openSync(1),
+    address: 0x40,
+    frequency: 50,
+    debug: false
+};
 
 console.log("Server listening on port 3000");
 
@@ -34,16 +40,16 @@ function newConnection(socket) {
             socket.broadcast.emit("RO_action", _actionName);
         } else if (_actionName.match("RO_turn_to_user") == "RO_turn_to_user") {
             if (User_position < Robot_position) {
-                socket.broadcast.emit("RO_action","RO_turn_left_1");
+                socket.broadcast.emit("RO_action", "RO_turn_left_1");
             } else if (User_position > Robot_position) {
-                socket.broadcast.emit("RO_action","RO_turn_right_1");
+                socket.broadcast.emit("RO_action", "RO_turn_right_1");
             }
             //servo
         } else if (_actionName.match("RO_turn_to_TV") == "RO_turn_to_TV") {
             if (TV_position < Robot_position) {
-                socket.broadcast.emit("RO_action","RO_turn_left_1");
+                socket.broadcast.emit("RO_action", "RO_turn_left_1");
             } else if (TV_position > Robot_position) {
-                socket.broadcast.emit("RO_action","RO_turn_right_1");
+                socket.broadcast.emit("RO_action", "RO_turn_right_1");
             }
             //servo
         } else if (_actionName.match("RO_wait") == "RO_wait") {

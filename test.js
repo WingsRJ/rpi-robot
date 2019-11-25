@@ -9,12 +9,10 @@
  * Licensed under the MIT license.
  */
 
-"use strict";
 
 var i2cBus = require("i2c-bus");
 
 var Pca9685Driver = require("pca9685").Pca9685Driver;
-
 
 // PCA9685 options
 var options = {
@@ -24,24 +22,21 @@ var options = {
     debug: true
 };
 
-
 // pulse lengths in microseconds (theoretically, 1.5 ms
 // is the middle of a typical servo's range)
 var pulseLengths = [1300, 1500, 1700];
 var steeringChannel = 0;
-
 
 // variables used in servoLoop
 var pwm;
 var nextPulse = 0;
 var timer;
 
-
 // loop to cycle through pulse lengths
 function servoLoop() {
     timer = setTimeout(servoLoop, 500);
 
-    pwm.setPulseLength(steeringChannel, pulseLengths[nextPulse]);
+    pwm.setPulseLength(steeringChannel, 1500);
     nextPulse = (nextPulse + 1) % pulseLengths.length;
 }
 
