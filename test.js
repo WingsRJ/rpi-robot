@@ -28,14 +28,13 @@ var steeringChannel = 0;
 
 // variables used in servoLoop
 var pwm;
-var nextPulse = 0;
 var timer;
 
 // loop to cycle through pulse lengths
 function servoLoop() {
     timer = setTimeout(servoLoop, 500);
 
-    pwm.setPulseLength(steeringChannel, 0);
+    pwm.setPulseLength(steeringChannel, 4096);
 }
 
 
